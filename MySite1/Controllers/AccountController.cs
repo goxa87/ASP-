@@ -12,11 +12,16 @@ namespace MySite1.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<User> UM, SignInManager<User> SIM)
+        public AccountController(UserManager<User> UM,
+            SignInManager<User> SIM,
+            RoleManager<IdentityRole> RM
+            )
         {
             _userManager = UM;
             _signInManager = SIM;
+            _roleManager = RM;
         }
 
 
@@ -68,6 +73,16 @@ namespace MySite1.Controllers
 
                 if (createResult.Result.Succeeded)
                 {
+                    var role = await _roleManager.FindByNameAsync("user");
+
+                    if (role == null)
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole("user"));
+                    }
+
+                    role = await _roleManager.FindByNameAsync("user");
+
+                    await _userManager.AddToRoleAsync(user, role.Name);
                     await _signInManager.SignInAsync(user,false);
                     return RedirectToAction("Index", "Home");
                 }
