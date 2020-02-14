@@ -36,7 +36,9 @@ namespace MySite1
                 opt.Password.RequireLowercase = false;
                 opt.Password.RequireNonAlphanumeric = false;
                 opt.Password.RequireDigit = false;
-            }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+            }).AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders()
+                .AddRoles<IdentityRole>();
 
             services.Configure<IdentityOptions>(options =>
             {
