@@ -1,0 +1,22 @@
+﻿@model MySite1.Auth.ViewModelLogin
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+
+<div class="central-container">
+    <div class="identity-container">
+        <form asp-action="Login" asp-antiforgery="true" method="post">
+            <div asp-validation-summary="ModelOnly" class="form-summary"></div>
+            <input type="hidden" asp-for="ReturnUrl" />
+            <label class="login-label">Электронная почта:</label><br>
+            <input class="form-input-text" type="text" asp-for="Login" /><br>
+            <label class="login-label" >Пароль:</label><br>
+            <input class="form-input-text" type="text" asp-for="Password" /><br><br>
+            <input class="form-submit" type="submit" value="Войти" /><br><br>
+            <a asp-action="Register"><label>Регистрация</label></a>
+        </form>
+    </div>
+</div>

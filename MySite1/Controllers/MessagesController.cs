@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MySite1.Controllers
 {
-    public class CommentsController : Controller
+    public class MessagesController : Controller
     {
         public IActionResult Index()
         {
