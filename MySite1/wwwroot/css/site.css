@@ -40,6 +40,22 @@ min-height: 100%;
 
 */
 
+/****************************ОБЩЕЕ*/
+
+.light-text-dark-back {
+    background-color:#2c302d;
+    color:#3fafbc;
+}
+
+.dark-text-light-back {
+    background-color: #c7a86a;
+    color: #254038;
+}
+
+.dark-text-light-back2 {
+    background-color: #3fafbc;
+    color: #254038;
+}
 
 /*GLOBALS ********************* */
 

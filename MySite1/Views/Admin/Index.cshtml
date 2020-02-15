@@ -1,0 +1,37 @@
+﻿@model List<MySite1.ViewModels.AdminIndex>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="about-hr"></div>
+<a asp-action="AddWork"><div>добавить работу</div></a>
+<div class="about-hr"></div>
+<a asp-action="Addpost"><div>добавить пост в блог</div></a>
+<div class="about-hr"></div>
+<h3 class="about-h3"> Пользователи:</h3>
+@foreach (var e in Model)
+{
+    <div class="about-hr"></div>
+    <div class="dark-text-light-back">@e.Pseudonim - @e.Email - @e.Organization </div>
+
+
+    <form asp-action="AddRoleAdmin" asp-route-userName="@e.Email" method="post">
+        <button class="dark-text-light-back2">добавить роль администратора</button>
+    </form>
+    <form asp-action="AddRoleModerator" asp-route-userName="@e.Email" method="post">
+        <button class="dark-text-light-back2">добавить роль модератора</button>
+    </form>
+    <form asp-action="DeleteUser" asp-route-userName="@e.Email" method="post">
+        <button class="dark-text-light-back2">удалить пользователя</button>
+    </form>
+
+    <div>Роли:</div>
+    foreach (var i in e.Roles)
+    {
+        <div class="light-text-dark-back">@i</div>
+    }
+}
+
+
+
