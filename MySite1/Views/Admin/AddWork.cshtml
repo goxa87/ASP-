@@ -1,8 +1,27 @@
-﻿@model MySite1.ViewModels.AdminAddWork
+﻿
 @{
     ViewData["Title"] = "AddWork";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>AddWork</h1>
+<form asp-action="AddWork" method="post" enctype="multipart/form-data">
+    <label>Заголовок:</label><br>
+    <input type="text" name="work.Title" /><br>
+
+    <label>Описание:</label><br>
+    <input type="text" name="work.Description" /><br>
+
+    <label>Архив:</label><br>
+    <input type="file" name="work.Archive" /><br>
+
+    <label>Изображения:</label><br>
+    @for( int i = 0; i < 3; i++ )
+    {        
+        <input name="work.pictures" type="file" /><br>
+    }
+    <br>
+    <input type="submit" value="сохранить" />
+</form>
+
 

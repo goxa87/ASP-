@@ -5,24 +5,12 @@ using System.Threading.Tasks;
 
 namespace MySite1.Models
 {
-    public class CommentWork
+    public class CommentWork : Comment
     {
         /// <summary>
         /// идентификатор
         /// </summary>
-        public int CommentWorkId { get; set; }
-        /// <summary>
-        /// автор коментария
-        /// </summary>
-        public string Author { get; set; }
-        /// <summary>
-        /// непосредственно тело коментария
-        /// </summary>
-        public string Body { get; set; }
-        /// <summary>
-        /// дата публикации
-        /// </summary>
-        public DateTime Date { get; set; }
+        public int CommentWorkId { get; set; }        
         /// <summary>
         /// индекс связи
         /// </summary>
