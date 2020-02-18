@@ -172,7 +172,7 @@ namespace MySite1.Controllers
                     }
 
                     newWork.Pictures.Add(new WorkPicture {
-                        Name = e.FileName
+                        Name = picName
                     });
                 }
             }

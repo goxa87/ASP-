@@ -10,8 +10,8 @@ a {
 }
     a:hover {
         text-decoration:none;
-    color:coral;
-}
+        color:coral;
+    }
 ul {
 list-style-type:none;
 padding:0;
@@ -268,3 +268,152 @@ padding:8px;
 }
 .about-block {
 }
+
+
+/*****************************             Worksindex*/
+/*ЦВЕТА   
+#254038   фон
+#2c302d  -- темный
+#39564e   - темный зелень
+#3fafbc - светлый зелень
+#aa3528 красный 
+#c7a86a беж
+#dfd2da  серый
+
+*/
+
+.work-container {
+    margin-top: 32px;
+    background-color: #39564e;
+    border: 2px solid #39564e;
+}
+
+.work-container h3, p {
+    color: #c7a86a;
+}
+.picture-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin:16px;
+}
+
+.work-picture {
+    width:300px;
+    height:220px;
+}
+.work-img {
+    object-fit: contain;
+    width:100%;
+}
+.work-body-container {
+    margin:16px;
+}
+
+.work-body-container > h3{
+    font-size:24px;
+    text-align:center;
+}
+
+.work-bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c302d;
+}
+
+.work-download {
+    display:flex;
+    align-items:center;
+    justify-content:start;
+    height: 32px;
+    font-size: 18px;
+    color: #aa3528;
+}
+
+
+.work-like {
+    color: #aa3528;
+    padding-right:  12px;
+
+}
+
+    .work-like:hover {
+        color: coral;
+        cursor: pointer;
+    }
+
+.work-comment-container {
+    background-color: #39564e;
+    border: 2px solid #39564e;
+    padding:16px;
+    padding-top:0;
+}
+
+
+.arrow {
+    width:32px;
+    height:32px;
+    cursor:pointer;
+}
+.work-comment-text {
+    color:#3fafbc;
+}
+.work-comment-container-topmenu {
+    height: 32px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.work-comment-add {
+    display:none;
+}
+
+.work-comment-all {
+    display:none;
+}
+
+.work-comment-add-form>label {
+    color: #3fafbc;
+}
+
+.work-comment-add-form>textarea {
+    width: 100%;
+    max-width: 500px;
+    height: 5em;
+}
+
+.work-comment-add-submit{
+    width: 200px;
+    background-color: #2c302d;
+    color: #3fafbc;
+    border:1px solid #3fafbc;
+    border-radius:8px;
+}
+    .work-comment-add-submit:hover {
+        color: coral;
+        background-color: #3fafbc;
+    }
+
+.work-comment-item {
+    width:100%;   
+}
+
+.work-comment-name {
+    
+    color: #3fafbc;
+}
+
+.work-comment-date {
+    color: #3fafbc;
+    font-size: 12px;
+}
+
+
+.work-comment-body {
+    color: #c7a86a;
+}
+
+/***************************************** */

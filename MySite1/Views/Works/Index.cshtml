@@ -1,8 +1,71 @@
-﻿
+﻿@model List<MySite1.Models.Work>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Работы</h1>
+@foreach (var e in Model)
+{
+    <div class="work-container">
+        <div class="picture-container">
+            @foreach (var im in e.Pictures)
+            {
+                <div class="work-picture">
+                    <img class="work-img" src="@im.Name" alt="работа" />
+                </div>
+            }
+        </div>
+        <div class="work-body-container">
+            <h3>@e.Title</h3>
+            <p>@e.Description</p>
+        </div>
+        <div class="work-bottom-bar">
+            <div class="work-download">
+                <div class="picture-container">
+                    <img src="~/img/saveico.png" />
+                </div>
+                <form asp-action="DownloadWork" asp-route-name="@e.Title" asp-route-path="@e.Archive">
+                    <input class="work-comment-add-submit" type="submit" value="скачать" />
+                </form>
+            </div>
+            <div class="work-like">ЛАЙКНУТЬ @e.Likes.ToString()</div>
+        </div>
+    </div>
+    <div class="work-comment-container">
+        <div class="work-comment-container-topmenu">
+            <div class="arrow">
+                <img src="~/img/arrow.png">
+            </div>
+            <div class="work-comment-text">Комментарии</div>
+        </div>
+        <div class="work-comment-add">
+            <form asp-action="AddComment" asp-route-workId="@e.WorkId" class="work-comment-add-form">
+                
+                <label>Оставьте комментарий здесь:</label><br>
+                <textarea name="comment"></textarea><br>
+                <input class="work-comment-add-submit" type="submit" value="Отправить"/>
+            </form>      
+            <hr class="about-hr" />
+        </div>
+        <div class="work-comment-all">
+            @if (e.CommentsWork.Count == 0)
+            {
+                <div>Коментариев пока нет(</div>
+            }
+            else
+            {
+            @foreach (var c in e.CommentsWork)
+                {
+                     <div class="work-comment-item">
+                         <div class="work-comment-name">@c.Author</div>
+                         <div class="work-comment-date">@c.Date.ToString("dd.MM.yyyy hh.mm")</div>
+                         <div class="work-comment-body">@c.Body</div>
+                     </div>
+                     <hr class="about-hr" />
+                }
+            }
+        </div>
+    </div>
+}
+       
 
