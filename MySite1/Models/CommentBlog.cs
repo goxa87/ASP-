@@ -19,5 +19,9 @@ namespace MySite1.Models
         /// ключ поста к кторому привязан комент
         /// </summary>
         public int BlogPostId { get; set; }
+        /// <summary>
+        /// свойство связи
+        /// </summary>
+        public BlogPost BlogPost { get; set; }
     }
 }

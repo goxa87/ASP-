@@ -4,5 +4,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>AddPost</h1>
+<h3>Добавить запись в блог</h3>
+
+
+<form asp-action="AddPost" method="post" enctype="multipart/form-data">
+    <label class="login-label">Заголовок</label><br>
+    <input class="form-input-text" name="model.title" type="text" /><br>
+    <label class="login-label">Описание</label><br>
+    <textarea class="form-input-text form-input-textarea" name="model.Body" type="text" ></textarea><br>
+    <label class="login-label">Изображение:</label><br>
+    <input class="form-input-text"  type="file" name="model.Picture"><br>
+    <input class="work-comment-add-submit" type="submit" value="Сохранить">
+
+</form>
 

@@ -1,8 +1,61 @@
-﻿
+﻿@model List<BlogPost>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Блог</h1>
+<h3 class="page-title">БЛОк(Г) Гошая</h3>
+
+@foreach (var e in Model)
+{
+    <div class="work-container">
+        <div class="picture-container">       
+            <div class="work-picture">
+                <img class="work-img" src="@e.Image" alt="работа" />
+            </div>       
+        </div>
+        <div class="work-body-container">
+            <h3>@e.Title</h3>
+            <p>@e.Body</p>
+        </div>
+        <div class="work-bottom-bar">
+            <div class="work-like">ЛАЙКНУТЬ @e.Likes.ToString()</div>
+        </div>
+    </div>
+    <div class="work-comment-container">
+        <div class="work-comment-container-topmenu">
+            <div class="arrow">
+                <img src="~/img/arrow.png">
+            </div>
+            <div class="work-comment-text">Комментарии</div>
+        </div>
+        <div class="work-comment-add">
+            <form asp-action="AddComment" asp-route-postId="@e.BlogPostId" class="work-comment-add-form">
+
+                <label>Оставьте комментарий здесь:</label><br>
+                <textarea name="comment"></textarea><br>
+                <input class="work-comment-add-submit" type="submit" value="Отправить" />
+            </form>
+            <hr class="about-hr" />
+        </div>
+        <div class="work-comment-all">
+            @if (e.CommentsBlog.Count == 0)
+            {
+                <div>Коментариев пока нет(</div>
+            }
+            else
+            {
+                @foreach (var c in e.CommentsBlog)
+                {
+                    <div class="work-comment-item">
+                        <div class="work-comment-name">@c.Author</div>
+                        <div class="work-comment-date">@c.Date.ToString("dd.MM.yyyy hh.mm")</div>
+                        <div class="work-comment-body">@c.Body</div>
+                    </div>
+                    <hr class="about-hr" />
+                }
+            }
+        </div>
+    </div>
+}
 

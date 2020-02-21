@@ -57,6 +57,14 @@ min-height: 100%;
     color: #254038;
 }
 
+.page-title {
+    margin-top:32px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    color: #c7a86a;
+}
+
 /*GLOBALS ********************* */
 
 .global {
@@ -193,6 +201,10 @@ width: 100%;
 border: none;
 border-radius:8px;
 padding:8px;
+}
+
+.form-input-textarea {
+    min-height:300px;    
 }
 
 .form-submit {
@@ -335,7 +347,7 @@ padding:8px;
 
 .work-like {
     color: #aa3528;
-    padding-right:  12px;
+    padding:  0 12px ;
 
 }
 

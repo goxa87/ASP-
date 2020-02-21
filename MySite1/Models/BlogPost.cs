@@ -34,5 +34,9 @@ namespace MySite1.Models
         /// дата публикации поста
         /// </summary>
         public DateTime Date { get; set; }
+        /// <summary>
+        /// комментарии к посту
+        /// </summary>
+        public List<CommentBlog> CommentsBlog { get; set; }
     }
 }

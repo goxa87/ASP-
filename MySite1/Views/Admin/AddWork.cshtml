@@ -6,22 +6,22 @@
 
 <h1>AddWork</h1>
 <form asp-action="AddWork" method="post" enctype="multipart/form-data">
-    <label>Заголовок:</label><br>
-    <input type="text" name="work.Title" /><br>
+    <label class="login-label">Заголовок:</label><br>
+    <input class="form-input-text" type="text" name="work.Title" /><br>
 
-    <label>Описание:</label><br>
-    <input type="text" name="work.Description" /><br>
+    <label class="login-label">Описание:</label><br>
+    <textarea  class="form-input-text form-input-textarea" type="text" name="work.Description" ></textarea><br>
 
-    <label>Архив:</label><br>
-    <input type="file" name="work.Archive" /><br>
+    <label class="login-label">Архив:</label><br>
+    <input class="form-input-text" type="file" name="work.Archive" /><br>
 
-    <label>Изображения:</label><br>
+    <label class="login-label">Изображения:</label><br>
     @for( int i = 0; i < 3; i++ )
     {        
-        <input name="work.pictures" type="file" /><br>
+        <input class="form-input-text" name="work.pictures" type="file" /><br>
     }
     <br>
-    <input type="submit" value="сохранить" />
+    <input class="work-comment-add-submit" type="submit" value="сохранить" />
 </form>
 
 

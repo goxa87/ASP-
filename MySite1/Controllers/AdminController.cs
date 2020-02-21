@@ -61,9 +61,7 @@ namespace MySite1.Controllers
                 });
             }
             return View(list);
-        }
-
-        public ActionResult AddPost() => View();
+        }        
 
         /// <summary>
         /// добавление роли администратора
@@ -181,6 +179,41 @@ namespace MySite1.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
+        }
+
+
+        // ******************************************************* доб поста
+        [HttpGet]
+        public ActionResult AddPost() => View();
+        [HttpPost]
+        public async Task<ActionResult> AddPost(AdminAddPost model)
+        {
+            var post = new BlogPost
+            {
+                Title=model.Title,
+                Body = model.Body,
+                Date = DateTime.Now,
+                Likes =0
+            };
+
+            if (model.Picture != null)
+            {
+                string picName = String.Concat("/BlogPictures/", model.Picture.FileName);
+                using (var FS = new FileStream(_hostEnviromnent.WebRootPath + picName, FileMode.Create))
+                {
+                    await model.Picture.CopyToAsync(FS);
+                }
+
+                post.Image = picName;
+            }
+            else 
+            {
+                post.Image = "/BlogPictures/defaultMe.jpg";
+            }
+            await _context.BlogPosts.AddAsync(post);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Blog");
         }
 
     }
