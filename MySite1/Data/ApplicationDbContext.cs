@@ -23,6 +23,15 @@ namespace MySite1.Data
         /// </summary>
         public DbSet<WorkPicture> WorkPictures { get; set; }
 
+        /// <summary>
+        /// Посты в блоге
+        /// </summary>
+        public DbSet<BlogPost> BlogPosts { get; set; }
+        /// <summary>
+        /// комментарии к блогу
+        /// </summary>
+        public DbSet<CommentBlog> CommentBlogs { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             builder.UseSqlServer(
