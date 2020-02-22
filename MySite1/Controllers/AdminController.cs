@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MySite1.Auth;
 using MySite1.Data;
 using MySite1.Models;
@@ -134,8 +135,10 @@ namespace MySite1.Controllers
 
         /// *************************************************************************** addWork
         [HttpGet]
+        [Authorize(Roles = "administrator")]
         public ActionResult AddWork() => View();
         [HttpPost]
+        [Authorize(Roles = "administrator")]
         public async Task<IActionResult> AddWork(AdminAddWork work)
         {
             // создать непосредственно ворк
@@ -184,8 +187,10 @@ namespace MySite1.Controllers
 
         // ******************************************************* доб поста
         [HttpGet]
+        [Authorize(Roles = "administrator")]
         public ActionResult AddPost() => View();
         [HttpPost]
+        [Authorize(Roles = "administrator")]
         public async Task<ActionResult> AddPost(AdminAddPost model)
         {
             var post = new BlogPost
@@ -215,6 +220,27 @@ namespace MySite1.Controllers
 
             return RedirectToAction("Index", "Blog");
         }
+
+        // *********************************************** сообщения
+        [HttpGet]
+        [Authorize(Roles = "administrator")]
+        public async Task<IActionResult> MyMessages()
+        {
+            var messages = await _context.ContactMessages.OrderBy(e => e.Readen).ThenByDescending(e => e.Date).ToListAsync();
+            return View(messages);
+        }
+
+        public async Task<IActionResult> ShowMessage(int messageId)
+        {
+            var message = await _context.ContactMessages.FirstOrDefaultAsync(e => e.ContactMessageId == messageId);
+            message.Readen = true;
+            await _context.SaveChangesAsync();
+            
+            return View(message);
+        }
+
+
+
 
     }
 }

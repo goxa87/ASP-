@@ -5,9 +5,14 @@
 }
 
 <div class="about-hr"></div>
+<a asp-action="MyMessages"><div>Сообщения</div></a>
+
+<div class="about-hr"></div>
 <a asp-action="AddWork"><div>добавить работу</div></a>
+
 <div class="about-hr"></div>
 <a asp-action="Addpost"><div>добавить пост в блог</div></a>
+
 <div class="about-hr"></div>
 <h3 class="about-h3"> Пользователи:</h3>
 @foreach (var e in Model)

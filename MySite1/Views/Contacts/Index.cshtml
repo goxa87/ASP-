@@ -4,5 +4,36 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3  class="page-title">КОНТАКТЫ</h3>
+
+
+    <div class="central-container-self">
+        <h3 class="page-title">КОНТАКТЫ</h3>
+        <div class="contact-item">
+            <div class="contact-title">Телефон:</div>
+            <div class="contact-value">+7-961-491-23-21</div>
+        </div>
+        <div class="contact-item">
+            <div class="contact-title">EMail:</div>
+            <div class="contact-value">goxa87@rambler.ru</div>
+        </div>
+        <div class="contact-item">
+            <div class="contact-title">WhatsAPP:</div>
+            <div class="contact-value">Есть</div>
+        </div>
+        <div class="contact-item">
+            <div class="contact-title">Telegram:</div>
+            <div class="contact-value">@@Georgy_Milk</div>
+        </div>
+        <br><br>
+        <h3 class="page-title">Или отправьте сообщение здесь</h3>
+        <form method="post" asp-action="SendMessage" asp-antiforgery="true">
+            <label class="login-label">От кого:</label><br>
+            <input name="model.From" class="form-input-text" type="text" /><br>
+            <label class="login-label">Для обратной связи(телефон, месенджер, почта)</label><br>
+            <input name="model.ContactInfo" class="form-input-text" type="text" /><br>
+            <label class="login-label">Ваше сообщение</label><br>
+            <textarea name="model.Body" class="form-input-text form-input-textarea"></textarea><br><br>
+            <input class="work-comment-add-submit" type="submit" value="ОТПРАВИТЬ" />
+        </form>
+    </div>
 

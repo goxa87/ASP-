@@ -31,6 +31,10 @@ namespace MySite1.Data
         /// комментарии к блогу
         /// </summary>
         public DbSet<CommentBlog> CommentBlogs { get; set; }
+        /// <summary>
+        /// сообщения из контактов
+        /// </summary>
+        public DbSet<ContactMessage> ContactMessages { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {

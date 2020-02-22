@@ -1,0 +1,22 @@
+﻿@model ContactMessage
+@{
+    ViewData["Title"] = "ShowMessage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 class="page-title">Сообщение</h3>
+<div class="light-text-dark-back2">Прочитано:</div>
+<div class="light-text-dark-back">@Model.Readen.ToString()</div>
+
+<div class="light-text-dark-back2">От кого:</div>
+<div class="light-text-dark-back">@Model.From</div>
+
+<div class="light-text-dark-back2">Контакт:</div>
+<div class="light-text-dark-back">@Model.ContactInfo</div>
+
+<div class="light-text-dark-back2">Дата:</div>
+<div class="light-text-dark-back">@Model.Date.ToString()</div>
+
+<div class="light-text-dark-back2">Содержание:</div>
+<div class="light-text-dark-back">@Model.Body</div>
+
