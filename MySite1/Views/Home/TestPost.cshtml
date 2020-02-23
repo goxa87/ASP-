@@ -1,0 +1,35 @@
+﻿@model TestModel
+@{
+    ViewData["Title"] = "TestPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>TestPage</h3>
+
+<form asp-antiforgery="true" asp-action="TestPost" method="post">
+    <div asp-validation-summary="ModelOnly" class="validation"></div>
+
+    <label asp-for="StringField"></label><br>
+    <span class="validation" asp-validation-for="StringField"></span><br>
+    <input type="text" asp-for="StringField" /><br>
+
+
+    <label asp-for="Intfield"></label><br>
+    <span class="validation" asp-validation-for="Intfield"></span>
+    <input type="text" asp-for="Intfield" /><br>
+
+
+    <label asp-for="DateField"></label><br>
+    <span class="validation" asp-validation-for="DateField"></span><br>
+    <input type="date" asp-for="DateField" /><br>
+
+
+    <label asp-for="BoolField"></label><br />
+    <input type="checkbox" asp-for="BoolField" /><label>checkbox</label><br>
+    <span asp-validation-for="BoolField"></span><br>
+
+    <input type="submit" value="send" />
+</form>
+
+<script src ="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

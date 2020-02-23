@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MySite1.Auth;
+using MySite1.SignalR;
 
 namespace MySite1
 {
@@ -28,8 +29,11 @@ namespace MySite1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //чат сигнал Р
+            services.AddSignalR();
+            // БД
             services.AddDbContext<ApplicationDbContext>();
-
+            // идентификация
             services.AddIdentity<User, IdentityRole>(opt =>
             {
                 opt.Password.RequireUppercase = false;
@@ -39,7 +43,7 @@ namespace MySite1
             }).AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders()
                 .AddRoles<IdentityRole>();
-
+            // настройки идентификации
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequiredLength = 6;
@@ -47,7 +51,7 @@ namespace MySite1
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
                 options.Lockout.AllowedForNewUsers = true;
                 options.User.RequireUniqueEmail = true;
-
+                // куки
                 services.ConfigureApplicationCookie(options =>
                 {
                     options.Cookie.HttpOnly = true;
@@ -91,6 +95,8 @@ namespace MySite1
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+
+                endpoints.MapHub<ChatHub>("/Messages/Index");
             });
         }
     }

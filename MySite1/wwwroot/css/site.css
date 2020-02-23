@@ -69,8 +69,35 @@ min-height: 100%;
     text-align: center;
     color: #c7a86a;
 }
+/*ВАЛИДАЦИЯ *****************************************/
+.field-validation-error {
+    color: coral;
+    display:block;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #c7a86a;
+}
+
+.validation-summary-valid {
+    display: none;
+}
 
 /*GLOBALS ********************* */
+
+
 
 .global {
 display:flex;
@@ -221,9 +248,13 @@ width:100%;
 padding:8px;
 }
 
+.short-button {
+    max-width:230px;
+}
+
 .form-submit:hover {
     background-color: #3fafbc;
-    color:#aa3528;
+    color: #aa3528;
 }
 
 /**************************************** home*/
@@ -415,7 +446,7 @@ padding:8px;
     border-radius:8px;
 }
     .work-comment-add-submit:hover {
-        color: coral;
+        color: #aa3528;
         background-color: #3fafbc;
     }
 

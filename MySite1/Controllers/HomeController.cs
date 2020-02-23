@@ -22,11 +22,25 @@ namespace MySite1.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult TestPost() => View();
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult TestPost(TestModel model)
         {
-            return View();
+            if (string.IsNullOrEmpty(model.StringField) || model.StringField.Length < 5)
+                ModelState.AddModelError("", "общая ошибка. длинна мен 5 ");
+
+            if (ModelState.IsValid)
+            {
+                return Content($"{model.BoolField} - {model.DateField.ToShortDateString()}- {model.Intfield} - {model.StringField}");
+            }
+            else 
+            {
+                return View(model);
+            }
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
