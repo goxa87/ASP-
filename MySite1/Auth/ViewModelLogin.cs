@@ -8,11 +8,13 @@ namespace MySite1.Auth
 {
     public class ViewModelLogin
     {
-        [Required] 
+        [Required(ErrorMessage ="Не введен логин")] 
+        [Display(Name ="Адрес электронной почты")]
         public string Login { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Не введен логин")]
         [DataType(DataType.Password)]
+        [Display(Name ="Пароль")]
         public string Password { get; set; }
 
         public string ReturnUrl { get; set; }

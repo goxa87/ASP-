@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MySite1.Auth;
 
 namespace MySite1.Controllers
@@ -44,9 +45,8 @@ namespace MySite1.Controllers
                     }
                     return RedirectToAction("Index", "Home");
                 }
+                ModelState.AddModelError("", "Неверные данные");
             }
-
-            ModelState.AddModelError("", "Что-то неправильно(");
             return View(model);
         }
 
@@ -58,6 +58,13 @@ namespace MySite1.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<ActionResult> Registration(ViewModelRegistration model)
         {
+            
+            if ( !string.IsNullOrWhiteSpace(model.Email) && await _userManager.Users.AnyAsync(e => e.Email.ToLower() == model.Email.ToLower()))
+                ModelState.AddModelError("", "Пользователь с такой электронной почтой уже существует");
+
+            if (!string.IsNullOrWhiteSpace(model.Name) && await _userManager.Users.AnyAsync(e => e.Pseudonym.ToLower() == model.Name.ToLower()))
+                ModelState.AddModelError("", "Пользователь с таким псевдонимом уже существует");
+
             if (ModelState.IsValid)
             {
 
@@ -83,7 +90,7 @@ namespace MySite1.Controllers
                     role = await _roleManager.FindByNameAsync("user");
 
                     await _userManager.AddToRoleAsync(user, role.Name);
-                    await _signInManager.SignInAsync(user,false);
+                    await _signInManager.SignInAsync(user, false);
                     return RedirectToAction("Index", "Home");
                 }
                 else//иначе
@@ -94,7 +101,6 @@ namespace MySite1.Controllers
                     }
                 }
             }
-
             return View(model);
         }
 

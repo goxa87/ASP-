@@ -1,7 +1,7 @@
 ﻿@model MySite1.Auth.ViewModelLogin
 @{
     ViewData["Title"] = "Login";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";    
 }
 
 <br>
@@ -11,12 +11,19 @@
         <form asp-action="Login" asp-antiforgery="true" method="post">
             <div asp-validation-summary="ModelOnly" class="form-summary"></div>
             <input type="hidden" asp-for="ReturnUrl" />
-            <label class="login-label">Электронная почта:</label><br>
+
+            <label asp-for="Login" class="login-label"></label><br>
+            <span asp-validation-for="Login"></span>
             <input class="form-input-text" type="text" asp-for="Login" /><br>
-            <label class="login-label" >Пароль:</label><br>
+
+            <label asp-for="Password" class="login-label" ></label><br>
+            <span asp-validation-for="Password"></span>
             <input class="form-input-text" type="text" asp-for="Password" /><br><br>
+
             <input class="form-submit" type="submit" value="Войти" /><br><br>
             <a asp-action="Registration"><label>Регистрация</label></a>
         </form>
     </div>
 </div>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
