@@ -23,3 +23,17 @@ $(function () {
         }
     });
 });
+
+$(function () {
+    $('.work-picture-static').click(function () {
+        $(this).toggleClass('work-picture-max');
+        $(this).toggleClass('work-picture-min');
+    });
+});
+
+
+$(function () {
+    $('.menu-small-size').click(function () {
+        $('#side-menu').toggleClass('show-side-menu');
+    });
+});
