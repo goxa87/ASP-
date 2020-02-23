@@ -412,6 +412,7 @@ padding:8px;
 }
 .work-comment-text {
     color:#3fafbc;
+    cursor:pointer;
 }
 .work-comment-container-topmenu {
     height: 32px;

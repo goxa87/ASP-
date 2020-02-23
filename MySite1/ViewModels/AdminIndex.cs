@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace MySite1.ViewModels
 {
+    /// <summary>
+    /// данные о пользователях для отображения(с целью редактирования)
+    /// </summary>
     public class AdminIndex
     {
         public string Email { get; set; }
