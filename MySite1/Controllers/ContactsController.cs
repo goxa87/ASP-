@@ -24,19 +24,21 @@ namespace MySite1.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> SendMessage(ContactMessage model)
+        [HttpPost]
+        public async Task<IActionResult> Index(ContactMessage model)
         {
-            model.Date = DateTime.Now;
-            model.Readen = false;
-
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return BadRequest();
+                model.FromEmail = User.Identity.Name;
+                model.Date = DateTime.Now;
+                model.Readen = false;
+
+                await _db.ContactMessages.AddAsync(model);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Index", "Contacts");
             }
 
-            await _db.ContactMessages.AddAsync(model);
-                await _db.SaveChangesAsync();
-                return RedirectToAction("Index", "Home");
+            return View(model);
             
         }
     }

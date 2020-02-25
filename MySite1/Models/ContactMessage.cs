@@ -18,16 +18,21 @@ namespace MySite1.Models
         /// <summary>
         /// от кого пришло сообщение
         /// </summary>
-        [Required, MaxLength(100)]
+        [Required(ErrorMessage = "Не заполенено поле \"от кого\""), MaxLength(100, ErrorMessage = "длинна не более 100 символов")]
+        [Display(Name = "От кого")]
         public string From { get; set; }
+
+        public string FromEmail { get; set; }
         /// <summary>
         /// контактная информация
         /// </summary>
+        [Display(Name= "Для обратной связи(телефон, месенджер, почта)")]
         public string ContactInfo { get; set; }
         /// <summary>
         /// тело сообщения
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Не введено само сообщение")]
+        [Display(Name ="Ваше Сообщение")]
         public string Body { get; set; }
         /// <summary>
         /// дата сообщения

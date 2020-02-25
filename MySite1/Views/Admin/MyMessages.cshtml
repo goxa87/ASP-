@@ -11,13 +11,13 @@
     if (!e.Readen)
     {
         <a asp-action="ShowMessage" asp-route-messageId="@e.ContactMessageId">
-            <div class="not-readen-message">@e.Date.ToString("HH.mm - dd.MM.yy") - @e.From</div>
+            <div class="not-readen-message">@e.Date.ToString("HH.mm - dd.MM.yy") - @e.From - @e.FromEmail</div>
         </a>
     }
     else
     {
         <a asp-action="ShowMessage" asp-route-messageId="@e.ContactMessageId">
-            <div class="readen-message">@e.Date.ToString("HH.mm - dd.MM.yy") - @e.From</div>
+            <div class="readen-message">@e.Date.ToString("HH.mm - dd.MM.yy") - @e.From - @e.FromEmail</div>
         </a>
     }
 }

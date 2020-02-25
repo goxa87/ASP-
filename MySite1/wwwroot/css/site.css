@@ -501,6 +501,7 @@ padding:8px;
 
 .work-comment-body {
     color: #c7a86a;
+    word-break:break-word;
 }
 
 /***************************************** контакты */
