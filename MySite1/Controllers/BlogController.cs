@@ -39,13 +39,13 @@ namespace MySite1.Controllers
             if (!string.IsNullOrWhiteSpace(comment))
             {
                 // получить псевдоним пользователя
-                var user = _userManager.FindByNameAsync(User.Identity.Name).Result.Pseudonym;
-
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                var name = user.Pseudonym;
                 CommentBlog com = new CommentBlog
                 {
                     BlogPostId = postId,
                     Body = comment,
-                    Author = user,
+                    Author = name,
                     Date = DateTime.Now
                 };
 

@@ -21,7 +21,11 @@ namespace MySite1.Controllers
         {
             _db = db;
         }
-
+        /// <summary>
+        /// Добавление 1 лайка на работу
+        /// </summary>
+        /// <param name="workId"> ид работы</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("worklike/{workId}")]
         public async Task<ActionResult> WorkLike(int workId)
@@ -35,7 +39,11 @@ namespace MySite1.Controllers
             await _db.SaveChangesAsync();
             return Ok();
         }
-
+        /// <summary>
+        /// добавление 1 лайка на пост
+        /// </summary>
+        /// <param name="postId">id поста</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("postlike/{postId}")]
         public async Task<ActionResult> PostLike(int postId)
@@ -57,11 +65,10 @@ namespace MySite1.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("messages/pass/{password}/notreaden/{notreaden}")]
-        public async Task<List<ContactMessage>> GetMessages(string password, bool notreaden)
+        public async Task<ActionResult<List<ContactMessage>>> GetMessages(string password, bool notreaden=true)
         {
-            //List<ContactMessage> rezult = new List<ContactMessage>();
-
-            if (password != "qwerty123") return new List<ContactMessage> { new ContactMessage { From = "неверный пароль" } };
+            
+            if (password != "qwerty123") return StatusCode(401);
 
             var select = await _db.ContactMessages.OrderByDescending(e=>e.Date).ToListAsync();
             if (notreaden)

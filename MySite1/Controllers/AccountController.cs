@@ -76,9 +76,9 @@ namespace MySite1.Controllers
                     Organization = model.Organization
                 };
 
-                var createResult = _userManager.CreateAsync(user, model.Password);
+                var createResult = await _userManager.CreateAsync(user, model.Password);
 
-                if (createResult.Result.Succeeded)
+                if (createResult.Succeeded)
                 {
                     var role = await _roleManager.FindByNameAsync("user");
 
@@ -95,7 +95,7 @@ namespace MySite1.Controllers
                 }
                 else//иначе
                 {
-                    foreach (var identityError in createResult.Result.Errors)
+                    foreach (var identityError in createResult.Errors)
                     {
                         ModelState.AddModelError("", identityError.Description);
                     }

@@ -27,6 +27,8 @@ namespace MySite1.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(ContactMessage model)
         {
+            //валидация на клиенте
+
             if (ModelState.IsValid)
             {
                 model.FromEmail = User.Identity.Name;

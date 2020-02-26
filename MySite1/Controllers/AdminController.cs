@@ -178,7 +178,7 @@ namespace MySite1.Controllers
                 }
             }
             //сохр тело
-            _context.Works.Add(newWork);
+            await _context.Works.AddAsync(newWork);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
@@ -203,7 +203,7 @@ namespace MySite1.Controllers
 
             if (model.Picture != null)
             {
-                string picName = String.Concat("/BlogPictures/", model.Picture.FileName);
+                string picName = String.Concat("/BlogPictures/",DateTime.Now.ToShortDateString(), model.Picture.FileName);
                 using (var FS = new FileStream(_hostEnviromnent.WebRootPath + picName, FileMode.Create))
                 {
                     await model.Picture.CopyToAsync(FS);
