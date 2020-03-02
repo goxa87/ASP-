@@ -35,14 +35,15 @@
 <form id="thisform" method="post">
     <label value></label><br>
     <input id="thisval" type="text"/><br>
-    <input type="submit" value="запрос" onclick="return false"/>
+    <input type="submit" value="запрос"/>
+    <label class="rezult"></label>
 </form>
 
 <script type="text/javascript">
-    $('#thisform').submit(function () {
+    $('#thisform').submit(function (event) {
         event.preventDefault();
         var valthis = $('#thisval').val();
-        $.post('@Url.Action("TestPost","Home")?t=' + valthis);
+        $('.rezult').load('@Url.Action("TestPost","Home")?t=' + valthis);
     });
 
 </script>

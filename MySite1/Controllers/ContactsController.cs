@@ -9,6 +9,7 @@ using MySite1.Models;
 
 namespace MySite1.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class ContactsController : Controller
     {
         public readonly ApplicationDbContext _db;

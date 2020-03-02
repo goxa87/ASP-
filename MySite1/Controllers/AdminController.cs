@@ -17,6 +17,7 @@ using MySite1.ViewModels;
 namespace MySite1.Controllers
 {
     [Authorize(Roles = "administrator, moderator")]
+    [AutoValidateAntiforgeryToken]
     public class AdminController : Controller
     {
 

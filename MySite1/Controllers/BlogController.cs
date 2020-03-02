@@ -11,10 +11,12 @@ using MySite1.Models;
 
 namespace MySite1.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class BlogController : Controller
     {
         private readonly ApplicationDbContext _db;
         private readonly UserManager<User> _userManager;
+
 
         public BlogController(ApplicationDbContext db,
             UserManager<User> UM)

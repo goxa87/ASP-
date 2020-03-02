@@ -12,6 +12,7 @@ using MySite1.Models;
 
 namespace MySite1.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class WorksController : Controller
     {
         private readonly ApplicationDbContext _db;

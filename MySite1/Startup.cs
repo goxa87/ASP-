@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MySite1.Auth;
 using MySite1.SignalR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MySite1
 {
@@ -63,7 +64,8 @@ namespace MySite1
                 });
             });
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddMvcOptions(options=>options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()) );
+
             services.AddRazorPages();
         }
 
@@ -81,6 +83,14 @@ namespace MySite1
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.Use(async (context,next)=>
+            {
+                context.Response.Headers.Add("Content-Security-Policy", "script-scr 'self'");
+                context.Response.Headers.Add("X-Frame-Options", "Deny");
+                await next();
+            });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
