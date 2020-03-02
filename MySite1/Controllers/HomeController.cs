@@ -25,20 +25,26 @@ namespace MySite1.Controllers
         [HttpGet]
         public IActionResult TestPost() => View();
 
-        [HttpPost]
-        public IActionResult TestPost(TestModel model)
-        {
-            if (string.IsNullOrEmpty(model.StringField) || model.StringField.Length < 5)
-                ModelState.AddModelError("", "общая ошибка. длинна мен 5 ");
+        //[HttpPost]
+        //public IActionResult TestPost(TestModel model)
+        //{
+        //    if (string.IsNullOrEmpty(model.StringField) || model.StringField.Length < 5)
+        //        ModelState.AddModelError("", "общая ошибка. длинна мен 5 ");
 
-            if (ModelState.IsValid)
-            {
-                return Content($"{model.BoolField} - {model.DateField.ToShortDateString()}- {model.Intfield} - {model.StringField}");
-            }
-            else 
-            {
-                return View(model);
-            }
+        //    if (ModelState.IsValid)
+        //    {
+        //        return Content($"{model.BoolField} - {model.DateField.ToShortDateString()}- {model.Intfield} - {model.StringField}");
+        //    }
+        //    else
+        //    {
+        //        return View(model);
+        //    }
+        //}
+
+        public int TestPost(int t)
+        {
+            _logger.LogWarning(111, $"это тело сообщения значение - {t}");
+            return 108;
         }
 
 

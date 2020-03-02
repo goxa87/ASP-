@@ -6,7 +6,7 @@
 
 <h3>TestPage</h3>
 
-<form asp-antiforgery="true" asp-action="TestPost" method="post">
+@*<form asp-antiforgery="true" asp-action="TestPost2" method="post">
     <div asp-validation-summary="ModelOnly" class="validation"></div>
 
     <label asp-for="StringField"></label><br>
@@ -30,6 +30,23 @@
 
     <input type="submit" value="send" />
 </form>
+<br><br><br>*@
+
+<form id="thisform" method="post">
+    <label value></label><br>
+    <input id="thisval" type="text"/><br>
+    <input type="submit" value="запрос" onclick="return false"/>
+</form>
+
+<script type="text/javascript">
+    $('#thisform').submit(function () {
+        event.preventDefault();
+        var valthis = $('#thisval').val();
+        $.post('@Url.Action("TestPost","Home")?t=' + valthis);
+    });
+
+</script>
+
 
 <script src ="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
