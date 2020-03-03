@@ -35,19 +35,11 @@
 <form id="thisform" method="post">
     <label value></label><br>
     <input id="thisval" type="text"/><br>
-    <input type="submit" value="запрос"/>
-    <label class="rezult"></label>
+    <input id="submit" type="button" value="запрос"/>
+    <div class="rezult"></div>
 </form>
 
-<script type="text/javascript">
-    $('#thisform').submit(function (event) {
-        event.preventDefault();
-        var valthis = $('#thisval').val();
-        $('.rezult').load('@Url.Action("TestPost","Home")?t=' + valthis);
-    });
 
-</script>
-
-
+<script src="~/js/likes.js"></script>
 <script src ="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

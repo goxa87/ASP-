@@ -42,10 +42,10 @@ namespace MySite1.Controllers
         //    }
         //}
 
-        public int TestPost(int t)
+        public ActionResult TestPost(int t)
         {
             _logger.LogWarning(111, $"это тело сообщения значение - {t}");
-            return 108;
+            return PartialView(108);
         }
 
 
