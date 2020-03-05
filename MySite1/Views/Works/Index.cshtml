@@ -30,8 +30,12 @@
                     <input class="work-comment-add-submit" type="submit" value="скачать" />
                 </form>
             </div>
+
+            <input class="like-id" type="hidden" value="@e.WorkId">
+            <input class="like-type" type="hidden" value="work">
+
             <div class="work-like">ЛАЙКНУТЬ @e.Likes.ToString()</div>
-            <a asp-action="WorkLike" asp-controller="Api" asp-route-workId="@e.WorkId"> Like</a>
+            
         </div>
     </div>
     <div class="work-comment-container">
@@ -71,4 +75,5 @@
     </div>
 }
        
+<script src="~/js/likes.js"></script>
 

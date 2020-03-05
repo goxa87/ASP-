@@ -425,6 +425,11 @@ padding:8px;
 
 }
 
+.work-like-cheked {
+    color: #c7a86a;
+    padding: 0 12px;
+}
+
     .work-like:hover {
         color: coral;
         cursor: pointer;

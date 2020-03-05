@@ -19,6 +19,9 @@
             <p>@e.Body</p>
         </div>
         <div class="work-bottom-bar">
+            <input class="like-id" type="hidden" value="@e.BlogPostId">
+            <input class="like-type" type="hidden" value="post">
+
             <div class="work-like">ЛАЙКНУТЬ @e.Likes.ToString()</div>
         </div>
     </div>
@@ -58,4 +61,4 @@
         </div>
     </div>
 }
-
+<script src="~/js/likes.js"></script>
