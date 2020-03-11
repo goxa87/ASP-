@@ -63,21 +63,21 @@ namespace MySite1.Controllers
         /// <param name="password">пароль</param>
         /// <param name="notreaden">только непрочитанные (1 - непрочитанные 0 - все)</param>
         /// <returns></returns>
-        [HttpGet]
-        [Route("messages/pass/{password}/notreaden/{notreaden}")]
-        public async Task<ActionResult<List<ContactMessage>>> GetMessages(string password, bool notreaden=true)
-        {
+        //[HttpGet]
+        //[Route("messages/pass/{password}/notreaden/{notreaden}")]
+        //public async Task<ActionResult<List<ContactMessage>>> GetMessages(string password, bool notreaden=true)
+        //{
             
-            if (password != "qwerty123") return StatusCode(401);
+        //    if (password != "qwerty123") return StatusCode(401);
 
-            var select = await _db.ContactMessages.OrderByDescending(e=>e.Date).ToListAsync();
-            if (notreaden)
-            {
-                return select.Where(e => e.Readen == false).ToList();
+        //    var select = await _db.ContactMessages.OrderByDescending(e=>e.Date).ToListAsync();
+        //    if (notreaden)
+        //    {
+        //        return select.Where(e => e.Readen == false).ToList();
 
-            }
-            else return select;
-        }
+        //    }
+        //    else return select;
+        //}
 
     }
 }

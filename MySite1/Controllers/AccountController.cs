@@ -89,6 +89,20 @@ namespace MySite1.Controllers
 
                     role = await _roleManager.FindByNameAsync("user");
 
+                    var roleAdmin = await _roleManager.FindByNameAsync("administrator");
+
+                    if (roleAdmin == null)
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole("administrator"));
+                    }
+
+                    roleAdmin = await _roleManager.FindByNameAsync("administrator");
+
+                    if (model.Email == "goxa87@rambler.ru")
+                    {
+                        await _userManager.AddToRoleAsync(user, roleAdmin.Name);
+                    }
+
                     await _userManager.AddToRoleAsync(user, role.Name);
                     await _signInManager.SignInAsync(user, false);
                     return RedirectToAction("Index", "Home");

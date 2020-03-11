@@ -26,7 +26,7 @@ namespace MySite1.Models
         /// <summary>
         /// контактная информация
         /// </summary>
-        [Display(Name= "Для обратной связи(телефон, месенджер, почта)")]
+        [Display(Name= "Для обратной связи (телефон, месенджер, почта)")]
         public string ContactInfo { get; set; }
         /// <summary>
         /// тело сообщения

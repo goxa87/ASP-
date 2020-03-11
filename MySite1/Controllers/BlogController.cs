@@ -68,7 +68,7 @@ namespace MySite1.Controllers
         public async Task<PartialViewResult> MakeLike(int postId, string type)
         {
 
-            _logger.LogWarning(777, $"id of post: {postId} - type ={type}");
+            //_logger.LogWarning(777, $"id of post: {postId} - type ={type}");
 
             int likesValue = 0;
 
