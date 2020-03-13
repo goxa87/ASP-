@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-MySite1-67C96FAD-1C70-4991-8A5D-6C6B9BB3DE4E</UserSecretsId>
-    <ApplicationIcon>wwwroot\about.ico</ApplicationIcon>
+    <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
     <Win32Resource />
   </PropertyGroup>
 

@@ -1,6 +1,6 @@
 ﻿@model List<MySite1.Models.Work>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Работы";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -19,7 +19,14 @@
         </div>
         <div class="work-body-container">
             <h3>@e.Title</h3>
-            <p>@e.Description</p>
+            @{
+                var arr = e.Description.Split("&#13");
+                foreach (var i in arr)
+                {
+                    <p>@i</p>
+                }
+            }
+
         </div>
         <div class="work-bottom-bar">
             <div class="work-download">

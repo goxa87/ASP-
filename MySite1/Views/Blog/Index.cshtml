@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3 class="page-title">БЛОк(Г) Гошая</h3>
+<h3 class="page-title">МОЙ БЛОГ</h3>
 
 @foreach (var e in Model)
 {
@@ -16,7 +16,13 @@
         </div>
         <div class="work-body-container">
             <h3>@e.Title</h3>
-            <p>@e.Body</p>
+            @{
+                var arr = e.Body.Split("&#13");
+                foreach (var i in arr)
+                {
+                    <p>@i</p>
+                }
+            }
         </div>
         <div class="work-bottom-bar">
             <input class="like-id" type="hidden" value="@e.BlogPostId">

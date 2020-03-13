@@ -167,7 +167,7 @@ namespace MySite1.Controllers
             {
                 if (e != null)
                 {
-                    string picName = String.Concat("/WorksPictures/", e.FileName);
+                    string picName = String.Concat("/WorksPictures/",DateTime.Now.ToShortDateString(),"_", e.FileName);
                     using (var FS = new FileStream(_hostEnviromnent.WebRootPath + picName, FileMode.Create))
                     {
                         await e.CopyToAsync(FS);
@@ -205,6 +205,7 @@ namespace MySite1.Controllers
             if (model.Picture != null)
             {
                 string picName = String.Concat("/BlogPictures/",DateTime.Now.ToShortDateString(), model.Picture.FileName);
+                picName = picName.Replace(' ', '_');
                 using (var FS = new FileStream(_hostEnviromnent.WebRootPath + picName, FileMode.Create))
                 {
                     await model.Picture.CopyToAsync(FS);

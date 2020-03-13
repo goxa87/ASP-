@@ -28,7 +28,7 @@ namespace MySite1.Controllers
 
         public IActionResult Index()
         {
-            var works = _db.Works.Include(u => u.Pictures).Include(e=>e.CommentsWork).ToList();
+            var works = _db.Works.Include(u => u.Pictures).Include(e=>e.CommentsWork).OrderByDescending(e=>e.WorkId).ToList();
             return View(works);
         }
         /// <summary>

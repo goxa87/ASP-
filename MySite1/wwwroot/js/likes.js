@@ -2,7 +2,7 @@
     // Ajax запрос.
     function ajaxRequest(id, ty) {
         return $.ajax({
-            url: 'https://localhost:5001/Blog/MakeLike/',
+            url: 'http://www.petrovblog.site//Blog/MakeLike/',
             type: 'get',
             data: {
                 postId: id,

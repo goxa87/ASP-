@@ -39,8 +39,22 @@ namespace MySite1.Data
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             builder.UseSqlServer(
-                @"Server=.\SQLEXPRESS;DataBase=MySite1;Trusted_Connection=True;"
+                @"
+                    Data Source=31.31.196.234;
+                    Initial Catalog=u0982202_my_site;
+                    User ID=u0982202_admin;
+                    Password=****;
+                    Integrated Security=false;"
                 );
+
+            //builder.UseSqlServer(
+            //   @"
+            //        Data Source=localhost;
+            //        Initial Catalog=u0982202_my_site;
+            //        User ID=u0982202_admin;
+            //        Password=****;
+            //        Integrated Security=false;"
+            //   );
         }
     }
 }
